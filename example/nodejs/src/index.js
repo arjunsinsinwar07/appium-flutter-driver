@@ -8,9 +8,10 @@ const osSpecificOps =
   process.env.APPIUM_OS === 'android'
     ? {
         platformName: 'Android',
-        deviceName: 'Pixel 2',
+        deviceName: 'SM A307FN',
         // @todo support non-unix style path
-        app: __dirname + '/../../apps/android-real-debug.apk' // download local to run faster and save bandwith
+        app: 'C:\Users\Admin\Desktop\App\android-real-debug.apk', // download local to run faster and save bandwith
+        // provide downloaded path to the application above.
         // app: 'https://github.com/truongsinh/appium-flutter-driver/releases/download/v0.0.4/android-real-debug.apk',
       }
     : process.env.APPIUM_OS === 'ios'
@@ -26,9 +27,13 @@ const osSpecificOps =
 
 const opts = {
   port: 4723,
+  path: '/wd/hub/',     // this is mandatory to be given else wdio will give exception
   capabilities: {
     ...osSpecificOps,
-    automationName: 'Flutter'
+    // platformName: 'Android',  // provide capabiity here
+    // deviceName: 'SM A307FN',
+     automationName: 'Flutter',
+    // app: 'C:\\Users\\Admin\\Desktop\\App\\android-real-debug.apk',
   }
 };
 
